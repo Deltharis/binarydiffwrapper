@@ -26,11 +26,14 @@ import java.util.stream.Collectors;
 
 public class Diff {
 
+    private final static String BACKUP_DIR = "BinaryDiffBackups";
+
     private Path tmpPath;
     private Path diffFilePath;
     private Gson gson = new Gson();
     private ConfigFile configFile;
     private HashProvider provider = new HashProviderSHA256();
+
 
     public static void main(String... args) {
         try {
@@ -168,7 +171,11 @@ public class Diff {
 
     private void doThePatch() throws IOException {
         Path fileToPatch = Paths.get(configFile.getFileToPatch());
-        Path backup = Paths.get(configFile.getFileToPatch() + ".back");
+        if(!Paths.get(BACKUP_DIR).toFile().exists())
+        {
+            Files.createDirectory(Paths.get(BACKUP_DIR));
+        }
+        Path backup = Paths.get(BACKUP_DIR + File.separator + configFile.getFileToPatch() + ".back");
         Files.move(fileToPatch, backup, StandardCopyOption.REPLACE_EXISTING);
         ProcessBuilder builder = new ProcessBuilder();
         builder.command("cmd", "/c", "bspatch.exe", backup.toString(), fileToPatch.toString(), diffFilePath.toString());
@@ -190,6 +197,8 @@ public class Diff {
             Files.move(backup, fileToPatch, StandardCopyOption.REPLACE_EXISTING);
             Files.delete(backup);
             System.out.println("Change didn't result in expected hash, rolled back changes to " + configFile.getFileToPatch());
+        } else {
+            System.out.println("Successfully patched " + configFile.getFileToPatch());
         }
         cleanUpTmp();
     }
