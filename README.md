@@ -6,6 +6,9 @@ Basic idea for this tool was to enable automation of esm cleaning in Skyrim. Win
 ## How to get
 Build using `mvn clean build` in the main directory or download the ready .jar file from releases.
 
+## Requirements
+Java JRE 1.8 or higher
+
 ## How to use
 There are two possibilities - either you already have .diff files from somewhere or need to create them on your own first.
 In the project in "patches" folder I've provided a few.
