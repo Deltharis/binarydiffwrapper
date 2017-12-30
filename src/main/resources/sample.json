@@ -1,0 +1,9 @@
+{
+  "hashAlgorythm" : "SHA256",
+  "filesToValidate": {
+    "Skyrim.esm": "ea70fb463c68b768e6956c9d3129e03e5cfb9fd6da110cd322af571dc26d5c72"
+  },
+  "fileToPatch": "Update.esm",
+  "hashBefore": "4a23eff97e52d0c55e4fcb1ca805b81166a921e1aa492263accf009dbfdc9a18",
+  "hashAfter": "a5e19c0f33783ac3a898ca49771dfd7c4db1e8dae7fcf59597d604ebdab1271f"
+}
