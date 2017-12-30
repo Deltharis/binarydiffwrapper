@@ -4,7 +4,7 @@ Tool for applying binary patches
 Basic idea for this tool was to enable automation of esm cleaning in Skyrim. Windows only currently.
 
 ## How to get
-Build using `mvn clean build` in the main directory or download the ready .jar file.
+Build using `mvn clean build` in the main directory or download the ready .jar file from releases.
 
 ## How to use
 There are two possibilities - either you already have .diff files from somewhere or need to create them on your own first.
@@ -12,7 +12,7 @@ In the project in "patches" folder I've provided a few.
 
 ### If you already have the .diff file
 
-Place the .jar in the same directory as the .diff files and files to be patched. Double click it or type `java -jar <jar-name>` in console.
+Place the .jar in the same directory as the .diff files and files to be patched. Double click it or type `java -jar binarydiffwrapper-1.0.jar` in console.
 
 The program will go through every .diff file in the current directory, applying them one by one (unless error occurs, in which case it stops).
 
@@ -25,7 +25,7 @@ It's usage is as follows:
 
 `bsdiff.exe oldfile newfile patchfile`
 
-Where `patchfile` is the file you will include in the .diff. .diff itself Is a zip file containing exactly two files - patchfile from bsdiff, and configuration json file with .json suffix.
+Where `patchfile` is the file you will include in the .diff. .diff itself is a zip file containing exactly two files - patchfile from bsdiff, and configuration json file with .json suffix.
 
 In the resources folder there is an attached sample json file. It's contents are:
 - hashAlgorythm - algorythm used for hashes in the config file. Currently CRC32 and SHA256 values are supported.
