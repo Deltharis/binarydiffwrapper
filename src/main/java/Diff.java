@@ -195,7 +195,6 @@ public class Diff {
         if (!provider.getHash(fileToPatch).equalsIgnoreCase(configFile.getHashAfter())) {
             //rollback
             Files.move(backup, fileToPatch, StandardCopyOption.REPLACE_EXISTING);
-            Files.delete(backup);
             System.out.println("Change didn't result in expected hash, rolled back changes to " + configFile.getFileToPatch());
         } else {
             System.out.println("Successfully patched " + configFile.getFileToPatch());
